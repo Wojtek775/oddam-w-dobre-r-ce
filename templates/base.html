@@ -42,7 +42,7 @@
     <section id="stats" class="stats">
         <div class="container container--85">
             <div class="stats--item">
-                <em>{{ total}}</em>
+                <em>{{ total }}</em>
                 <h3>Oddanych worków</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                     tempora!</p>
@@ -112,41 +112,26 @@
                 czym się zajmują, komu pomagają i czego potrzebują.</p>
 
             <ul class="help--slides-items">
-                <li>
-                    <div class="col">
-                        <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                        <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                    </div>
+                {% for i in institution %}
+                    {% if i.type == 1 %}
+                        <li>
+                            <div class="col">
+                                <div class="title">{{ i.name }}</div>
+                                <div class="subtitle">Cel i misja: {{ i.description }}.</div>
+                            </div>
 
-                    <div class="col">
-                        <div class="text">ubrania, jedzenie, sprzęt AGD, meble, zabawki</div>
-                    </div>
-                </li>
+                            <div class="col">
 
-                <li>
-                    <div class="col">
-                        <div class="title">Fundacja “Dla dzieci"</div>
-                        <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                            życiowej.
-                        </div>
-                    </div>
+                                <div class="text">
+                                    {% for categories in i.categories.all %}{{ categories }}<br/>{% endfor %}</div>
 
-                    <div class="col">
-                        <div class="text">ubrania, meble, zabawki</div>
-                    </div>
-                </li>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
 
-                <li>
-                    <div class="col">
-                        <div class="title">Fundacja “Bez domu”</div>
-                        <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania
-                        </div>
-                    </div>
 
-                    <div class="col">
-                        <div class="text">ubrania, jedzenie, ciepłe koce</div>
-                    </div>
-                </li>
+
             </ul>
             <!-- Pagination
             <ul class="help--slides-pagination">
@@ -166,49 +151,24 @@
                 quos suscipit corporis!
             </p>
             <ul class="help--slides-items">
-                <li>
-                    <div class="col">
-                        <div class="title">Organizacja 1</div>
-                        <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                    </div>
+                {% for i in institution %}
+                    {% if i.type == 2 %}
+                        <li>
+                            <div class="col">
+                                <div class="title">{{ i.name }}</div>
+                                <div class="subtitle">Cel i misja: {{ i.description }}.</div>
+                            </div>
 
-                    <div class="col">
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </div>
-                </li>
+                            <div class="col">
 
-                <li>
-                    <div class="col">
-                        <div class="title">Organizacja 2</div>
-                        <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                    </div>
+                                <div class="text">
+                                    {% for categories in i.categories.all %}{{ categories }}<br/>{% endfor %}</div>
 
-                    <div class="col">
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </div>
-                </li>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
 
-                <li>
-                    <div class="col">
-                        <div class="title">Organizacja 3</div>
-                        <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                    </div>
-
-                    <div class="col">
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="col">
-                        <div class="title">Organizacja 4</div>
-                        <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                    </div>
-
-                    <div class="col">
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </div>
-                </li>
             </ul>
 
             <!-- Pagination
@@ -227,27 +187,23 @@
             <p>Lorem ipsum dolor sit amet, his ocurreret persequeris ea, ad utinam laudem duo. Verterem adipisci
                 partiendo eos ne, ea his reque quaeque recteque, ne quo lobortis intellegam.</p>
             <ul class="help--slides-items">
-                <li>
-                    <div class="col">
-                        <div class="title">Lokalna zbiórka 1</div>
-                        <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                    </div>
+                {% for i in institution %}
+                    {% if i.type == 3 %}
+                        <li>
+                            <div class="col">
+                                <div class="title">{{ i.name }}</div>
+                                <div class="subtitle">Cel i misja: {{ i.description }}.</div>
+                            </div>
 
-                    <div class="col">
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </div>
-                </li>
+                            <div class="col">
 
-                <li>
-                    <div class="col">
-                        <div class="title">Lokalna zbiórka 2</div>
-                        <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                    </div>
+                                <div class="text">
+                                    {% for categories in i.categories.all %}{{ categories }}<br/>{% endfor %}</div>
 
-                    <div class="col">
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    </div>
-                </li>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
 
             <!-- Pagination

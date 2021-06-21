@@ -11,10 +11,12 @@ class LandingPage(View):
 
     def get(self, request):
         count_institution = Institution.objects.count()
+        institution = Institution.objects.all()
         items = Donation.objects.all()
         count_bags = sum(items.values_list('quantity', flat=True))
 
-        return render(request, 'base.html', {'count': count_institution, 'total': count_bags})
+        return render(request, 'base.html',
+                      {'count': count_institution, 'total': count_bags, "institution": institution})
 
 
 class AddDonation(View):

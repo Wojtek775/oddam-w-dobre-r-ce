@@ -15,10 +15,13 @@ TYPE = (
 class Category(models.Model):
     name = models.CharField(max_length=64)
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class Institution(models.Model):
     name = models.CharField(max_length=64)
-    description = models.CharField(max_length=64)
+    description = models.CharField(max_length=256)
     type = models.IntegerField(choices=TYPE)
     categories = models.ManyToManyField('Category')
 
