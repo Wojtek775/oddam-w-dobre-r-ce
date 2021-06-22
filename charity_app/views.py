@@ -1,8 +1,12 @@
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.db.models import Sum
 from django.shortcuts import render
 
 # Create your views here.
+from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import CreateView
 
 from charity_app.models import Institution, Donation
 
@@ -28,7 +32,7 @@ class AddDonation(View):
 class Login(View):
 
     def get(self, request):
-        return render(request, 'login.html')
+        return render(request, 'registration/login.html')
 
 
 class Register(View):
