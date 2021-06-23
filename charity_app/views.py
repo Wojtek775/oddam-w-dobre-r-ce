@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.db.models import Sum
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse_lazy
@@ -38,3 +39,13 @@ class Login(View):
 class Register(View):
     def get(self, request):
         return render(request, 'register.html')
+
+    def post(self, request):
+        user = User()
+        user.first_name = request.POST.get('name')
+        user.last_name = request.POST.get('surname')
+        user.email = request.POST.get('email')
+        user.password = request.POST.get('password')
+        user.username = request.POST.get('email')
+        user.save()
+        return redirect('Login')
