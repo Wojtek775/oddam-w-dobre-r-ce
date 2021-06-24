@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
@@ -35,6 +36,15 @@ class Login(View):
     def get(self, request):
         return render(request, 'registration/login.html')
 
+    def post(self, request):
+        username = request.POST["email"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("LandingPage")
+        return redirect('Register')
+
 
 class Register(View):
     def get(self, request):
@@ -45,7 +55,7 @@ class Register(View):
         user.first_name = request.POST.get('name')
         user.last_name = request.POST.get('surname')
         user.email = request.POST.get('email')
-        user.password = request.POST.get('password')
+        user.set_password(request.POST.get('password'))
         user.username = request.POST.get('email')
         user.save()
         return redirect('Login')
