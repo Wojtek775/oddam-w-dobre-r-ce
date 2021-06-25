@@ -1,20 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block header %}
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <title>Document</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    </head>
-    <body>
     <header>
-    <nav class="container container--70">
-    <ul class="nav--actions">
-        <li><a href="{% url 'Login' %}">Zaloguj</a></li>
-        <li class="highlighted"><a href="{% url 'Register' %}">Załóż konto</a></li>
-    </ul>
 {% endblock %}
 {% block content %}
     <section class="login-page">

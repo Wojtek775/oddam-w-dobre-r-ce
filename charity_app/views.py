@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
@@ -59,3 +59,9 @@ class Register(View):
         user.username = request.POST.get('email')
         user.save()
         return redirect('Login')
+
+
+class LogOut(View):
+    def get(self, request):
+        logout(request)
+        return redirect('LandingPage')

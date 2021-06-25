@@ -2,22 +2,38 @@
 
 <!DOCTYPE html>
 <html lang="pl">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
 {% block header %}
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <title>Document</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    </head>
-    <body>
     <header class="header--main-page">
+    {% endblock %}
+    {% if user.is_authenticated %}
+    <nav class="container container--70">
+    <ul class="nav--actions">
+        <li class="logged-user">
+            Witaj {{ user.first_name }}
+            <ul class="dropdown">
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Ustawienia</a></li>
+                <li><a href="{% url 'Logout' %}">Wyloguj</a></li>
+            </ul>
+        </li>
+    </ul>
+    {% else %}
     <nav class="container container--70">
     <ul class="nav--actions">
         <li><a href="{% url 'Login' %}" class="btn btn--small btn--without-border">Zaloguj</a></li>
         <li><a href="{% url 'Register' %}" class="btn btn--small btn--highlighted">Załóż konto</a></li>
     </ul>
-{% endblock %}
+{% endif %}
+
 <ul>
     <li><a href="{% url 'LandingPage' %}" class="btn btn--without-border active">Start</a></li>
     <li><a href="http://127.0.0.1:8000/#steps" class="btn btn--without-border">O co chodzi?</a></li>
@@ -129,7 +145,6 @@
                         </li>
                     {% endif %}
                 {% endfor %}
-
 
 
             </ul>
